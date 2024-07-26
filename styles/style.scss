@@ -1,23 +1,25 @@
 @use 'neumorph-effect';
 
 body {
-    background-color: #E4E4E4;
     margin: 0;
     box-sizing: border-box;
-    display: flex;
-    justify-content: center;
     font-family: "Inter", sans-serif;
     font-style: normal;
 }
 
 #app {
-    width: 100vw;
+    height: 90vh;
+    padding: 5vh 11vw;
+    background-color: #E4E4E4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
 }
 
 
 .score-bar {
-    margin: 6vh 11vw;
-    @include neumorph-effect.flat($distance: 4px, $intensity: 14%,$blur: 20px);
+    @include neumorph-effect.flat($distance: 6px, $intensity: 20%,$blur: 10px);
     height: 12vh;
     padding: 1.5vh 5vw;
     border-radius: 28px;
@@ -28,8 +30,8 @@ body {
 }
 
 .score {
-    @include neumorph-effect.concave($distance: 4px, $intensity: 14%,$blur: 20px);
-    border-radius: 25px;
+    @include neumorph-effect.concave($distance: 6px, $intensity: 20%,$blur: 15px);
+    border-radius: 20px;
     aspect-ratio: 1/1;
     min-height: 100%;
     display: flex;
