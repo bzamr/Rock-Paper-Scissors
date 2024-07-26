@@ -50,3 +50,59 @@ body {
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 1rem;
 }
+
+.selector {
+    align-self: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 20vw;
+    button {
+        aspect-ratio: 1/1;
+        @include neumorph-effect.flat($distance: 10px,$intensity: 15%,$blur:20px);
+        border: none;
+        border-radius: 25px;
+        &:active {
+            @include neumorph-effect.pressed($distance: 10px,$intensity: 14%,$blur:20px);
+            
+        }
+        &:hover {
+            cursor: pointer;
+        }
+        img {
+            max-width: 20vw;
+        }
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    a {
+        border-radius: 15px;
+        @include neumorph-effect.flat($distance: 10px,$intensity: 15%,$blur:20px);
+        border: none;
+        padding: .5rem;
+        &:hover {
+            @include neumorph-effect.pressed($distance: 10px,$intensity: 14%,$blur:20px);
+            cursor: alias;
+        }
+    }
+    button {
+        @include neumorph-effect.flat($distance: 10px,$intensity: 15%,$blur:20px);
+        border: none;
+        font-weight: bold;
+        font-size: 1rem;
+        border-radius: 15px;
+        padding: 1rem;
+        &:active {
+            @include neumorph-effect.pressed($distance: 10px,$intensity: 14%,$blur:20px);
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+}
