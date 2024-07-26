@@ -8,7 +8,7 @@
 
   background: $bg-color;
   box-shadow:  $distance $distance $blur scale-color($bg-color, $lightness: -$intensity),
-               -$distance (-$distance) $blur scale-color($bg-color, $lightness: color.lightness($bg-color)+$intensity);
+               -$distance (-$distance) $blur scale-color($bg-color, $lightness: color.lightness($bg-color)+math.div($intensity,2));
                
 }
 
