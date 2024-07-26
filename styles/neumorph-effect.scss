@@ -1,0 +1,32 @@
+@use 'sass:color';
+@use 'sass:math';
+
+
+
+
+@mixin flat($bg-color: #d9d9d9,$intensity: 14% ,$distance: 4px , $blur: 20px){
+
+  background: $bg-color;
+  box-shadow:  $distance $distance $blur scale-color($bg-color, $lightness: -$intensity),
+               -$distance (-$distance) $blur scale-color($bg-color, $lightness: color.lightness($bg-color)+$intensity);
+               
+}
+
+
+@mixin concave($bg-color: #d9d9d9,$intensity: 14% ,$distance: 4px , $blur: 20px){
+  @include flat($bg-color ,$intensity ,$distance ,$blur);
+  background: linear-gradient(145deg, scale-color($bg-color,$lightness: -(math.div($intensity,2))), scale-color($bg-color,$lightness: (color.lightness($bg-color) - math.div($intensity,2))));
+}
+
+
+@mixin convex($bg-color: #d9d9d9,$intensity: 14% ,$distance: 4px , $blur: 20px){
+  @include flat($bg-color ,$intensity ,$distance ,$blur);
+  background: linear-gradient(145deg, scale-color($bg-color,$lightness: (color.lightness($bg-color) - math.div($intensity,2))) ,scale-color($bg-color,$lightness: -(math.div($intensity,2)))) ;
+}
+
+
+@mixin pressed($bg-color: #d9d9d9,$intensity: 14% ,$distance: 4px , $blur: 20px){
+  background: $bg-color;
+  box-shadow:  inset $distance $distance $blur scale-color($bg-color, $lightness: -$intensity),
+               inset (-$distance) (-$distance) $blur scale-color($bg-color, $lightness: color.lightness($bg-color)+$intensity);
+}
