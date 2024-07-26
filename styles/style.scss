@@ -1,0 +1,50 @@
+@use 'neumorph-effect';
+
+body {
+    background-color: #E4E4E4;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+}
+
+#app {
+    width: 100vw;
+}
+
+
+.score-bar {
+    margin: 6vh 11vw;
+    @include neumorph-effect.flat($distance: 4px, $intensity: 14%,$blur: 20px);
+    height: 12vh;
+    padding: 1.5vh 5vw;
+    border-radius: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.score {
+    @include neumorph-effect.concave($distance: 4px, $intensity: 14%,$blur: 20px);
+    border-radius: 25px;
+    aspect-ratio: 1/1;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    :first-child {
+        font-size: 0.75rem;
+    }
+    :last-child {
+        font-size: 2.5rem;
+    }
+}
+
+#title {
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 1rem;
+}
