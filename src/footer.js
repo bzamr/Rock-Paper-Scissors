@@ -1,6 +1,6 @@
 export function footer(element){
     element.innerHTML = `
-    <button class="rules btn">
+    <button class="rules">
         RULES
     </button>
     <a href="https://github.com/bzamr/Rock-Paper-Scissors">

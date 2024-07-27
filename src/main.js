@@ -1,4 +1,4 @@
-import './styles/style.scss'
+import '../styles/style.scss'
 import score_bar from './score-bar'
 import { selector } from './selector';
 import { footer } from './footer';
