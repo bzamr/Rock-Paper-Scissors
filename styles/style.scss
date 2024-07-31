@@ -154,19 +154,50 @@ body {
 
 @media screen and (min-width: 431px) {
     .result {
-        align-self: baseline;
-
+        div {
+            flex-direction: column;
+            span {
+                margin-top: 0;
+                margin-bottom: 2rem;
+            }
+        }
         .middle {
+            align-self: baseline;
             order: initial;        
             h2{
                 margin: 0 0 1.5rem 0;
             }
         }
         img {
-            min-width: 12vw;
+            min-width: 10vw;
         }
         span {
             font-size: 2rem;
         }
     }
+}
+
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(10px);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    img {
+        max-width: 100%;
+    }
+
+}
+
+.closed {
+    display: none;
+
 }
