@@ -1,5 +1,5 @@
 export function generate_random_number(from,to){
-    return Math.floor(Math.random()*to)+from;
+    return Math.floor(Math.random()*(to))+from;
 }
 
 //posible choice in rock paper scissors game
@@ -16,7 +16,7 @@ export function choice_menu() {
 
 //return one of choice_simple
 export function random_choice(){
-    let rnd = generate_random_number(0,2);
+    let rnd = generate_random_number(0,3);
     let choice;
     
     switch (rnd) {
