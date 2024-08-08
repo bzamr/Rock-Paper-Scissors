@@ -8,6 +8,10 @@ const routes = [
         path: "/",
         template: game
     },
+    {
+        path: "/404",
+        template: notFound
+    }
 ]
 
 
