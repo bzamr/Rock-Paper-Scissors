@@ -71,7 +71,7 @@ export function generate_jwts_token(payload,env) {
     };
     const header_part = btoa(JSON.stringify(header));
     const payload_part = btoa(JSON.stringify(payload)).split("=")[0];
-    const signiture_part = generate_signiture(header_part,payload,env.JWT_SECRET)
+    const signiture_part = generate_signiture(header_part,payload_part,env.JWT_SECRET)
     return (header_part+'.' + payload_part+'.'+signiture_part);
 }
 
