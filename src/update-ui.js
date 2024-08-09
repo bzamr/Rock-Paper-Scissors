@@ -8,7 +8,7 @@ export default function update_ui(ctx) {
     update_board(ctx);
 }
 
-let score = localStorage.getItem("score") | 0;
+let score = localStorage.getItem("score")?localStorage.getItem("score"):0;
 function update_score(result){
     if (result.winner === "user"){
         score += 1;

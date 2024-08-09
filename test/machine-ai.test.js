@@ -3,7 +3,7 @@ import { generate_random_number , choice_menu, random_choice } from '../src/mach
 
 
 test("random number between 0 and 2",()=>{
-    let rnd_number = generate_random_number(0,2);
+    let rnd_number = generate_random_number(0,3);
     expect(rnd_number).toBeGreaterThanOrEqual(0)
     expect(rnd_number).toBeLessThanOrEqual(2);
 });
