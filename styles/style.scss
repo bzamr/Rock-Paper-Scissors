@@ -5,16 +5,16 @@ body {
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
     font-style: normal;
+    background-color: #E4E4E4;
 }
 
 #app {
     height: 90vh;
     padding: 5vh 11vw;
-    background-color: #E4E4E4;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+    transition: transform .4s;
 }
 
 .score-bar {
@@ -124,6 +124,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
     
     a {
         border-radius: 15px;
@@ -201,3 +202,15 @@ body {
     display: none;
 
 }
+
+
+
+.login, .signup,.logout {
+    
+    img {
+        width: 1rem;
+    }
+}
+
+
+

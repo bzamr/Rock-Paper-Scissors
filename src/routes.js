@@ -9,6 +9,14 @@ const routes = [
         template: game
     },
     {
+        path: "/login",
+        template: login
+    },
+    {
+        path: "/signup",
+        template: signup
+    },
+    {
         path: "/404",
         template: notFound
     }

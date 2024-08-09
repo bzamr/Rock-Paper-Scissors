@@ -7,11 +7,10 @@ export default function game(){
     `<div class="score-bar"></div>
       <div class="board"></div>
       <div class="footer"></div>
-      <button onclick="window.router('/login')"></button>
       `;
 
 //Init 
-score_bar(document.querySelector(".score-bar"),(localStorage.getItem("score") | 0));
+score_bar(document.querySelector(".score-bar"),(localStorage.getItem("score")?localStorage.getItem("score"):0));
 change_board_to().triple_options(document.querySelector(".board"));
 footer(document.querySelector(".footer"));
 }
