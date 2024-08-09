@@ -1,7 +1,7 @@
 import { verify_token } from "./logout";
 
 export async function onRequest(context) {
-    const token = context.request.headers.get("Authorization").split(" ")[1];
+    const token = context.request.headers.get("Cookie").split("=")[1];
         if(!verify_token(token,context.env)){
             return new Response(JSON.stringify({
                 status: 401,
@@ -11,7 +11,7 @@ export async function onRequest(context) {
             })
         }
 
-    const user_id = JSON.parse(atob(context.request.headers.get("Authorization").split(" ")[1].split(".")[1])).user_id;
+    const user_id = JSON.parse(atob(context.request.headers.get("Cookie").split("=")[1].split(".")[1])).user_id;
     const data = await context.request.json();
     if(data.type === "set"){
         if(!(data.score && data.modified_at)) {

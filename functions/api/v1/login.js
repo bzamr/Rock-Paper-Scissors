@@ -33,7 +33,7 @@ export async function onRequest(context) {
         {
             status: 200,
             headers: {
-                "Set-Cookie": `'__token__'=${token}; Max-Age=${1*60*60}; Secure; HttpOnly`,
+                "Set-Cookie": `__token__=${token}; Max-Age=${1*60*60};Secure; HttpOnly`,
             }
         });
 

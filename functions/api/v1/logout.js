@@ -4,7 +4,7 @@ export async function onRequest(context) {
 
     try {
 
-        let token = context.request.headers.get("Authorization");
+        let token = context.request.headers.get("Cookie");
         if (!token){
             return new Response(JSON.stringify({
                 status: 401,
@@ -13,7 +13,7 @@ export async function onRequest(context) {
                 status: 401
             });
         }else{
-            token = token.split(" ")[1];
+            token = token.split("=")[1];
         }
 
 
@@ -27,7 +27,7 @@ export async function onRequest(context) {
             {
                 status: 200,
                 headers:{
-                    "Set-Cookie": `'__token__'=${token}; Max-Age=0; Secure; HttpOnly`,
+                    "Set-Cookie": `__token__=${token}; Max-Age=0; Secure; HttpOnly`,
                 }
             });
 
