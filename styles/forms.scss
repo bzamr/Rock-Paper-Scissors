@@ -1,0 +1,131 @@
+@use "neumorph-effect";
+
+.login-page,
+.signup-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#loginButton,
+#signUpButton {
+  background-color: black;
+  color: white;
+}
+
+input {
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  // aspect-ratio: 6/1;
+  margin-top: 2rem;
+  padding: 1rem;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  @include neumorph-effect.flat($distance: 10px, $intensity: 15%, $blur: 20px);
+  &:focus {
+    outline: none;
+    @include neumorph-effect.pressed(
+      $distance: 5px,
+      $intensity: 14%,
+      $blur: 20px
+    );
+  }
+  &::placeholder {
+    padding-left: 2rem;
+    font-size: 0.9rem;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: auto;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  font-size: medium;
+}
+@media screen and (min-width: 431px) {
+  .login-page,
+  .signup-page {
+    border-radius: 2rem;
+    align-self: center;
+    width: fit-content;
+    @include neumorph-effect.flat(
+      $distance: 10px,
+      $intensity: 15%,
+      $blur: 20px
+    );
+    padding: 1.5rem;
+  }
+  input {
+    width: 90%;
+  }
+}
+
+#goHome {
+  aspect-ratio: 1/1;
+  width: fit-content;
+  @include neumorph-effect.flat($distance: 10px, $intensity: 15%, $blur: 20px);
+}
+
+.toast {
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  animation: 2.5s fade ease-in-out infinite;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.9;
+    translate: 0;
+  }
+  100% {
+    translate: -1000px;
+    opacity: 0;
+  }
+}
+
+.warning {
+  background-color: yellow;
+  @include neumorph-effect.convex(
+    $bg-color: rgb(159, 159, 44),
+    $distance: 10px,
+    $intensity: 29%,
+    $blur: 20px
+  );
+}
+
+.error {
+  @include neumorph-effect.convex(
+    $bg-color: rgb(134, 36, 36),
+    $distance: 5px,
+    $intensity: 10%,
+    $blur: 20px
+  );
+}
+
+.success {
+  @include neumorph-effect.convex(
+    $bg-color: rgb(65, 128, 55),
+    $distance: 10px,
+    $intensity: 29%,
+    $blur: 20px
+  );
+}
