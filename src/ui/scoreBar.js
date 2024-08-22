@@ -1,11 +1,8 @@
-export default function score_bar(element,score) {
-    element.innerHTML = `
+export default function scoreBar(score) {
+  return `
         <span id="title">ROCK<br>PAPER<br>SCISSORS</span>
         <div class="score">
             <span>SCORE</span>
-            <span id="score-num">${score}</span>
+            <span id="scoreNum">${score}</span>
         </div>`;
 }
-
-
-
