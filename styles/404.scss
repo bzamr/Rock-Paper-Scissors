@@ -6,27 +6,30 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-}
-
-button {
-  @include neumorph-effect.flat($distance: 10px, $intensity: 15%, $blur: 20px);
-  border: none;
-  font-weight: bold;
-  font-size: 1rem;
-  border-radius: 15px;
-  padding: 1rem;
-  &:active {
-    @include neumorph-effect.pressed(
+  button {
+    @include neumorph-effect.flat(
       $distance: 10px,
-      $intensity: 14%,
+      $intensity: 15%,
       $blur: 20px
     );
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 15px;
+    padding: 1rem;
+    &:active {
+      @include neumorph-effect.pressed(
+        $distance: 10px,
+        $intensity: 14%,
+        $blur: 20px
+      );
+    }
+    &:hover {
+      cursor: pointer;
+    }
   }
-  &:hover {
-    cursor: pointer;
-  }
-}
 
-p {
-  font-size: large;
+  p {
+    font-size: large;
+  }
 }
