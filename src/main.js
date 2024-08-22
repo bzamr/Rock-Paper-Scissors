@@ -1,14 +1,17 @@
-import '../styles/style.scss'
-import { change_board_to } from './board';
-import { footer } from './footer';
-import score_bar from './score-bar';
+import "../styles/style.scss";
+import "../styles/forms.scss";
+import router from "./lib/router";
+import { changeThemeIcon, setPreferedThemeLocalStorage } from "./lib/helpers";
 
-document.querySelector('#app').innerHTML = 
-    `<div class="score-bar"></div>
-      <div class="board"></div>
-      <div class="footer"></div>`;
+window.router = router;
+window.router("/");
 
-//Init 
-score_bar(document.querySelector(".score-bar"),(localStorage.getItem("score") | 0));
-change_board_to().triple_options(document.querySelector(".board"));
-footer(document.querySelector(".footer"));
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+if (prefersDarkScheme.matches) {
+  setPreferedThemeLocalStorage("dark");
+  document.querySelector("#app")?.classList.toggle("light-theme");
+  document.querySelector("#app")?.classList.toggle("dark-theme");
+} else {
+  setPreferedThemeLocalStorage("light");
+  changeThemeIcon();
+}
