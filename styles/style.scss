@@ -1,216 +1,314 @@
-@use 'neumorph-effect';
+@use "neumorph-effect";
+@use "dark-mode";
 
-body {
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
-    font-style: normal;
-    background-color: #E4E4E4;
+#app.light-theme {
+  --bg-color: #d9d9d9;
 }
 
 #app {
-    height: 90vh;
-    padding: 5vh 11vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform .4s;
+  background-color: var(--bg-color);
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  background-color: var(--bg-color);
+}
+
+.layer {
+  height: 90vh;
+  padding: 5vh 11vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.4s;
 }
 
 .score-bar {
-    @include neumorph-effect.flat($distance: 6px, $intensity: 20%,$blur: 10px);
-    height: 12vh;
-    padding: 1.5vh 5vw;
-    border-radius: 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
+  @include neumorph-effect.flat($distance: 6px, $intensity: 20%, $blur: 10px);
+  height: 12vh;
+  padding: 1.5vh 5vw;
+  border-radius: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
 }
 
 .score {
-    @include neumorph-effect.concave($distance: 6px, $intensity: 20%,$blur: 15px);
-    border-radius: 20px;
-    aspect-ratio: 1/1;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    :first-child {
-        font-size: 0.75rem;
-    }
-    :last-child {
-        font-size: 2.5rem;
-    }
+  @include neumorph-effect.concave(
+    $distance: 6px,
+    $intensity: 20%,
+    $blur: 15px
+  );
+  border-radius: 20px;
+  aspect-ratio: 1/1;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  :first-child {
+    font-size: 0.75rem;
+  }
+  :last-child {
+    font-size: 2.5rem;
+  }
 }
 
 #title {
-    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    font-size: 1rem;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 1rem;
 }
 
 .board {
-    button {
-        aspect-ratio: 1/1;
-        @include neumorph-effect.flat($distance: 10px,$intensity: 15%,$blur:20px);
-        border: none;
-        border-radius: 25px;
-        &:active {
-            @include neumorph-effect.pressed($distance: 10px,$intensity: 14%,$blur:20px);
-        }
-        &:hover {
-            cursor: pointer;
-        }
-        img {
-            max-width: 20vw;
-        }
+  button {
+    aspect-ratio: 1/1;
+    @include neumorph-effect.flat(
+      $distance: 10px,
+      $intensity: 15%,
+      $blur: 20px
+    );
+    border: none;
+    border-radius: 25px;
+    &:active {
+      @include neumorph-effect.pressed(
+        $distance: 10px,
+        $intensity: 14%,
+        $blur: 20px
+      );
     }
-}
-
-.triple {
-    align-self: center;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    gap: 20vw;
-    
-}
-
-.result {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: center;
-    align-content: center;
-    
-    .middle{
-        order: 1;
-        flex-direction: column;
-        margin-top: 2rem;
-        h2{
-            font-weight: bold;
-            letter-spacing: .25rem;
-            text-shadow: 3px 3px 6px rgb(82, 81, 81);
-        }
-        button {
-            aspect-ratio: 3/1;
-            height: 7vh;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: medium;
-        }
-    }
-    div {
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: space-between;
-        align-items: center;
-
-        span {
-            margin-top: 2rem;
-            font-size: small;
-            font-weight: bold;
-        }
+    &:hover {
+      cursor: pointer;
     }
     img {
-        aspect-ratio: 1/1;
-        @include neumorph-effect.convex($distance: 15px,$intensity: 29%,$blur:20px);
-        border-radius: 25px;
+      max-width: 20vw;
     }
+  }
 }
 
-.footer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    
-    a {
-        border-radius: 15px;
-        @include neumorph-effect.flat($distance: 10px,$intensity: 15%,$blur:20px);
-        border: none;
-        padding: .5rem;
-        &:hover {
-            @include neumorph-effect.pressed($distance: 10px,$intensity: 14%,$blur:20px);
-            cursor: alias;
-        }
+.easyMode,
+.hardMode {
+  align-self: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.hardMode {
+  gap: 10vw;
+}
+
+.easyMode {
+  gap: 20vw;
+}
+.resultMode {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+
+  .middle {
+    order: 1;
+    flex-direction: column;
+    margin-top: 2rem;
+    h2 {
+      font-weight: bold;
+      letter-spacing: 0.25rem;
+      text-shadow: 3px 3px 6px rgb(82, 81, 81);
     }
     button {
-        @include neumorph-effect.flat($distance: 10px,$intensity: 15%,$blur:20px);
-        border: none;
-        font-weight: bold;
-        font-size: 1rem;
-        border-radius: 15px;
-        padding: 1rem;
-        &:active {
-            @include neumorph-effect.pressed($distance: 10px,$intensity: 14%,$blur:20px);
-        }
-        &:hover {
-            cursor: pointer;
-        }
+      aspect-ratio: 3/1;
+      height: 7vh;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: medium;
     }
-    
+  }
+  div {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      margin-top: 2rem;
+      font-size: small;
+      font-weight: bold;
+    }
+  }
+  img {
+    aspect-ratio: 1/1;
+    @include neumorph-effect.convex(
+      $distance: 15px,
+      $intensity: 29%,
+      $blur: 20px
+    );
+    border-radius: 25px;
+  }
 }
 
 @media screen and (min-width: 431px) {
-    .result {
-        div {
-            flex-direction: column;
-            span {
-                margin-top: 0;
-                margin-bottom: 2rem;
-            }
-        }
-        .middle {
-            align-self: baseline;
-            order: initial;        
-            h2{
-                margin: 0 0 1.5rem 0;
-            }
-        }
-        img {
-            min-width: 10vw;
-        }
-        span {
-            font-size: 2rem;
-        }
+  .resultMode {
+    div {
+      flex-direction: column;
+      span {
+        margin-top: 0;
+        margin-bottom: 2rem;
+      }
     }
+    .middle {
+      align-self: baseline;
+      order: initial;
+      h2 {
+        margin: 0 0 1.5rem 0;
+      }
+    }
+    img {
+      min-width: 10vw;
+    }
+    span {
+      font-size: 2rem;
+    }
+  }
 }
 
-
 .modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 10;
-    transform: translate(-50%, -50%);
-    backdrop-filter: blur(10px);
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    img {
-        max-width: 100%;
-    }
-
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(10px);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  img {
+    max-width: 100%;
+  }
 }
 
 .closed {
-    display: none;
-
+  display: none;
 }
 
+.login,
+.signup,
+.logout {
+  img {
+    width: 1rem;
+  }
+}
+a {
+  border-radius: 15px;
+  @include neumorph-effect.flat($distance: 10px, $intensity: 15%, $blur: 20px);
+  border: none;
+  padding: 0.5rem;
+  &:hover {
+    @include neumorph-effect.pressed(
+      $distance: 10px,
+      $intensity: 14%,
+      $blur: 20px
+    );
+    cursor: alias;
+  }
+}
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
-
-.login, .signup,.logout {
-    
-    img {
-        width: 1rem;
+  #menuButton {
+    flex: 1;
+    margin: 0 5vw;
+  }
+  button {
+    @include neumorph-effect.flat(
+      $distance: 10px,
+      $intensity: 15%,
+      $blur: 20px
+    );
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 15px;
+    padding: 1rem;
+    &:active {
+      @include neumorph-effect.pressed(
+        $distance: 10px,
+        $intensity: 14%,
+        $blur: 20px
+      );
     }
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
+.menu-open {
+  transform: translateY(-37vh);
+  @include neumorph-effect.flat($distance: 6px, $intensity: 20%, $blur: 10px);
+  border-radius: 1rem;
+}
 
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  ul {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100vw;
 
+    button {
+      width: 95vw;
+      margin-top: 2vh;
+    }
+    button {
+      @include neumorph-effect.flat(
+        $distance: 10px,
+        $intensity: 15%,
+        $blur: 20px
+      );
+      border: none;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 15px;
+      padding: 1rem;
+      &:active {
+        @include neumorph-effect.pressed(
+          $distance: 10px,
+          $intensity: 14%,
+          $blur: 20px
+        );
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+#themeChanger {
+  max-width: fit-content;
+  padding: 0.5rem;
+}
+
+#spock {
+  img {
+    filter: drop-shadow(0px 3px 2px #0000004a);
+  }
+}
