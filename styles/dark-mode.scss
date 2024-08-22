@@ -1,0 +1,77 @@
+@use "neumorph-effect";
+#app.dark-theme {
+  color: white;
+  --bg-color: #222222;
+  .score-bar,
+  button,
+  a,
+  .menu-open {
+    color: white;
+    @include neumorph-effect.flat-dark(
+      $distance: 6px,
+      $intensity: 20%,
+      $blur: 10px
+    );
+  }
+  button:active {
+    @include neumorph-effect.pressed-dark(
+      $distance: 10px,
+      $intensity: 14%,
+      $blur: 20px
+    );
+  }
+  a:hover {
+    @include neumorph-effect.pressed-dark(
+      $distance: 10px,
+      $intensity: 14%,
+      $blur: 20px
+    );
+  }
+
+  .score {
+    @include neumorph-effect.concave-dark(
+      $distance: 6px,
+      $intensity: 20%,
+      $blur: 15px
+    );
+  }
+
+  .resultMode div img {
+    @include neumorph-effect.convex-dark(
+      $distance: 15px,
+      $intensity: 29%,
+      $blur: 20px
+    );
+  }
+
+  .login-page,
+  .signup-page {
+    input {
+      color: white;
+      @include neumorph-effect.flat-dark(
+        $distance: 10px,
+        $intensity: 15%,
+        $blur: 20px
+      );
+      &:focus {
+        color: white;
+        @include neumorph-effect.pressed-dark(
+          $distance: 5px,
+          $intensity: 14%,
+          $blur: 20px
+        );
+      }
+    }
+  }
+
+  @media screen and (min-width: 431px) {
+    .login-page,
+    .signup-page {
+      @include neumorph-effect.flat-dark(
+        $distance: 10px,
+        $intensity: 15%,
+        $blur: 20px
+      );
+    }
+  }
+}
